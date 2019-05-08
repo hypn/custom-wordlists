@@ -7,28 +7,32 @@ mkdir -p downloaded
 URL="https://raw.githubusercontent.com/rbsec/dnscan/master/subdomains-10000.txt" && echo $URL && curl -s $URL | sort | uniq > ./downloaded/rbsec-subdomains-10000.txt;
 URL="https://raw.githubusercontent.com/rbsec/dnscan/master/subdomains-uk-1000.txt" && echo $URL && curl -s $URL | sort | uniq > ./downloaded/rbsec-subdomains-uk-1000.txt;
 
-# from recon-ng, fierce, theHarvester, Knockpy
+# from recon-ng, fierce, theHarvester, Knockpy, aquatone
 URL="https://raw.githubusercontent.com/jorik041/recon-ng/master/data/hostnames.txt" && echo $URL && curl -s $URL | sort | uniq > ./downloaded/jorik041-hostnames.txt;
 URL="https://raw.githubusercontent.com/davidpepper/fierce-domain-scanner/master/hosts.txt" && echo $URL && curl -s $URL | sort | uniq > ./downloaded/davidpepper-hosts.txt;
 URL="https://raw.githubusercontent.com/laramies/theHarvester/master/wordlists/dns-names.txt" && echo $URL && curl -s $URL | sort | uniq > ./downloaded/laramies-dns-names.txt;
-URL="https://raw.githubusercontent.com/knock/4.1/knockpy/wordlist/wordlist.txt" && echo $URL && curl -s $URL | sort | uniq > ./downloaded/knock-wordlist.txt;
+URL="https://raw.githubusercontent.com/santiko/KnockPy/master/wordlist.txt" && echo $URL && curl -s $URL | sort | uniq > ./downloaded/knock-wordlist.txt;
+URL="https://raw.githubusercontent.com/michenriksen/aquatone/ruby/subdomains.lst" && echo $URL && curl -s $URL | sort | uniq > ./downloaded/aquatone-subdomains.txt;
 
 # others
 URL="https://raw.githubusercontent.com/SageHack/cloud-buster/master/lists/subdomains" && echo $URL && curl -s $URL | sort | uniq > ./downloaded/SageHack-subdomains.txt;
 URL="https://raw.githubusercontent.com/danTaler/WordLists/master/Subdomain.txt" && echo $URL && curl -s $URL | sort | uniq > ./downloaded/danTaler-Subdomain.txt;
 URL="https://raw.githubusercontent.com/ODSdev/fast-subdomain-scanner/master/wordlists/big.txt" && echo $URL && curl -s $URL | sort | uniq > ./downloaded/ODSdev-big.txt;
-URL="https://raw.githubusercontent.com/assetnote/commonspeak2-wordlists/blob/master/subdomains/subdomains.txt" && echo $URL && curl -s $URL | sort | uniq > ./downloaded/assetnote-subdomains.txt;
+URL="https://raw.githubusercontent.com/assetnote/commonspeak2-wordlists/master/subdomains/subdomains.txt" && echo $URL && curl -s $URL | sort | uniq > ./downloaded/assetnote-subdomains.txt;
 
-# my custom wordlists \:D/
+# my custom wordlists \:D/ (double bosted to survive the last "grep -v" removing words appearing only once)
 URL="https://raw.githubusercontent.com/hypn/custom-wordlists/master/dev-terms.txt" && echo $URL && curl -s $URL | sort | uniq > ./downloaded/hypn-dev-terms.txt;
+URL="https://raw.githubusercontent.com/hypn/custom-wordlists/master/dev-terms.txt" && echo $URL && curl -s $URL | sort | uniq > ./downloaded/hypn-dev-terms2.txt;
 URL="https://raw.githubusercontent.com/hypn/custom-wordlists/master/nouns-plural.txt" && echo $URL && curl -s $URL | sort | uniq > ./downloaded/nouns-plural.txt;
+URL="https://raw.githubusercontent.com/hypn/custom-wordlists/master/nouns-plural.txt" && echo $URL && curl -s $URL | sort | uniq > ./downloaded/nouns-plural2.txt;
 URL="https://raw.githubusercontent.com/hypn/custom-wordlists/master/nouns-singular.txt" && echo $URL && curl -s $URL | sort | uniq > ./downloaded/nouns-singular.txt;
+URL="https://raw.githubusercontent.com/hypn/custom-wordlists/master/nouns-singular.txt" && echo $URL && curl -s $URL | sort | uniq > ./downloaded/nouns-singular2.txt;
 
-# grab SecLists (note "SecLists/Discovery/DNS/sortedcombined-knock-dnsrecon-fierce-reconng.txt" will extra boost those subdomains, consider removing it)
-# rm SecLists/Discovery/DNS/sortedcombined-knock-dnsrecon-fierce-reconng
-git clone https://github.com/danielmiessler/SecLists.git || (cd SecLists && git pull)
+# grab SecLists (note "SecLists/Discovery/DNS/sortedcombined-knock-dnsrecon-fierce-reconng.txt" will extra boost some of the above subdomains wordlists)
+git clone https://github.com/danielmiessler/SecLists.git || (cd SecLists && git reset HEAD --hard && git pull)
+rm SecLists/Discovery/DNS/sortedcombined-knock-dnsrecon-fierce-reconng.txt
 
-# now merge them all and sort by most common
+# now merge them all and sort by most common, removing words seen only once
 cat ./downloaded/*.txt ./SecLists/Discovery/DNS/*.txt | tr '[:upper:]' '[:lower:]' \
   | grep -v '\.' | grep -v '\$' | grep -v '\#' | grep -v '%' | grep -v '*' | grep -v '(' | grep -v ')' \
   | grep -v 'porn' | grep -v 'xxx' | grep -v 'lolita' | grep -v 'preteen' \
@@ -38,4 +42,4 @@ cat ./downloaded/*.txt ./SecLists/Discovery/DNS/*.txt | tr '[:upper:]' '[:lower:
   | sort | uniq -c | sort -nr \
   | grep -v "      1 " \
   | awk '{print $2}' \
-  > subdomains.txt
+  > ../subdomains.txt
