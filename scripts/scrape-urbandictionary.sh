@@ -1,0 +1,27 @@
+#!/bin/bash
+seq 1 677  | while read PAGE; do echo A $PAGE; ./get-urban-dictionary-words.sh A $PAGE >> ud-A.txt; sleep 1; done;
+seq 1 1146 | while read PAGE; do echo B $PAGE; ./get-urban-dictionary-words.sh B $PAGE >> ud-B.txt; sleep 1; done;
+seq 1 1134 | while read PAGE; do echo C $PAGE; ./get-urban-dictionary-words.sh C $PAGE >> ud-C.txt; sleep 1; done;
+seq 1 841  | while read PAGE; do echo D $PAGE; ./get-urban-dictionary-words.sh D $PAGE >> ud-D.txt; sleep 1; done;
+seq 1 314  | while read PAGE; do echo E $PAGE; ./get-urban-dictionary-words.sh E $PAGE >> ud-E.txt; sleep 1; done;
+seq 1 763  | while read PAGE; do echo F $PAGE; ./get-urban-dictionary-words.sh F $PAGE >> ud-F.txt; sleep 1; done;
+seq 1 624  | while read PAGE; do echo G $PAGE; ./get-urban-dictionary-words.sh G $PAGE >> ud-G.txt; sleep 1; done;
+seq 1 5    | while read PAGE; do echo H $PAGE; ./get-urban-dictionary-words.sh H $PAGE >> ud-H.txt; sleep 1; done;
+seq 1 35   | while read PAGE; do echo I $PAGE; ./get-urban-dictionary-words.sh I $PAGE >> ud-I.txt; sleep 1; done;
+seq 1 7    | while read PAGE; do echo J $PAGE; ./get-urban-dictionary-words.sh J $PAGE >> ud-J.txt; sleep 1; done;
+seq 1 5    | while read PAGE; do echo K $PAGE; ./get-urban-dictionary-words.sh K $PAGE >> ud-K.txt; sleep 1; done;
+seq 1 5    | while read PAGE; do echo L $PAGE; ./get-urban-dictionary-words.sh L $PAGE >> ud-L.txt; sleep 1; done;
+seq 1 5    | while read PAGE; do echo M $PAGE; ./get-urban-dictionary-words.sh M $PAGE >> ud-M.txt; sleep 1; done;
+seq 1 5    | while read PAGE; do echo N $PAGE; ./get-urban-dictionary-words.sh N $PAGE >> ud-N.txt; sleep 1; done;
+seq 1 5    | while read PAGE; do echo O $PAGE; ./get-urban-dictionary-words.sh O $PAGE >> ud-O.txt; sleep 1; done;
+seq 1 7    | while read PAGE; do echo P $PAGE; ./get-urban-dictionary-words.sh P $PAGE >> ud-P.txt; sleep 1; done;
+seq 1 2    | while read PAGE; do echo Q $PAGE; ./get-urban-dictionary-words.sh Q $PAGE >> ud-Q.txt; sleep 1; done;
+seq 1 5    | while read PAGE; do echo R $PAGE; ./get-urban-dictionary-words.sh R $PAGE >> ud-R.txt; sleep 1; done;
+seq 1 6    | while read PAGE; do echo S $PAGE; ./get-urban-dictionary-words.sh S $PAGE >> ud-S.txt; sleep 1; done;
+seq 1 9    | while read PAGE; do echo T $PAGE; ./get-urban-dictionary-words.sh T $PAGE >> ud-T.txt; sleep 1; done;
+seq 1 4    | while read PAGE; do echo U $PAGE; ./get-urban-dictionary-words.sh U $PAGE >> ud-U.txt; sleep 1; done;
+seq 1 4    | while read PAGE; do echo V $PAGE; ./get-urban-dictionary-words.sh V $PAGE >> ud-V.txt; sleep 1; done;
+seq 1 4    | while read PAGE; do echo W $PAGE; ./get-urban-dictionary-words.sh W $PAGE >> ud-W.txt; sleep 1; done;
+seq 1 3    | while read PAGE; do echo X $PAGE; ./get-urban-dictionary-words.sh X $PAGE >> ud-X.txt; sleep 1; done;
+seq 1 3    | while read PAGE; do echo Y $PAGE; ./get-urban-dictionary-words.sh Y $PAGE >> ud-Y.txt; sleep 1; done;
+seq 1 2    | while read PAGE; do echo Z $PAGE; ./get-urban-dictionary-words.sh Z $PAGE >> ud-Z.txt; sleep 1; done;
