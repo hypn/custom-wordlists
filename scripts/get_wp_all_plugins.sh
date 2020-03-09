@@ -1,3 +1,3 @@
 #!/bin/bash
-svn list http://plugins.svn.wordpress.org
+svn list http://plugins.svn.wordpress.org | sed 's/\///g'
 
