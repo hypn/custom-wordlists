@@ -8,7 +8,7 @@ URL="https://raw.githubusercontent.com/rbsec/dnscan/master/subdomains-10000.txt"
 URL="https://raw.githubusercontent.com/rbsec/dnscan/master/subdomains-uk-1000.txt" && echo $URL && curl -s $URL | sort | uniq > ./downloaded/rbsec-subdomains-uk-1000.txt;
 
 # from recon-ng, fierce, theHarvester, Knockpy, aquatone, sublist3r, amass, massdns, fast-subdomain-scanner, cloud-buster
-URL="https://github.com/shakenetwork/Recon-ng/blob/master/data/hostnames.txt" && echo $URL && curl -s $URL | sort | uniq > ./downloaded/shakenetwork-hostnames.txt;
+URL="https://raw.githubusercontent.com/shakenetwork/Recon-ng/master/data/hostnames.txt" && echo $URL && curl -s $URL | sort | uniq > ./downloaded/shakenetwork-hostnames.txt;
 URL="https://raw.githubusercontent.com/davidpepper/fierce-domain-scanner/master/hosts.txt" && echo $URL && curl -s $URL | sort | uniq > ./downloaded/davidpepper-hosts.txt;
 URL="https://raw.githubusercontent.com/laramies/theHarvester/master/wordlists/dns-names.txt" && echo $URL && curl -s $URL | sort | uniq > ./downloaded/laramies-dns-names.txt;
 URL="https://raw.githubusercontent.com/santiko/KnockPy/master/wordlist.txt" && echo $URL && curl -s $URL | sort | uniq > ./downloaded/knock-wordlist.txt;
